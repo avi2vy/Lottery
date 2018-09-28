@@ -1,0 +1,38 @@
+
+  <div class="col">
+    <div class="jumbotron">
+      
+    </div>
+  <div class="panel panel-primary" style="text-align:center" class="color-dark">
+      <h3 id="Winner">{{Winner}}</h3>
+    <div class="panel-heading" style="text-align:center"><h1>Welcome to {{ title }}!</h1></div>
+    <form style="text-align:center"class="color-light">
+      <br/>
+      <br/>
+      <div class="form-group">
+      <input name="input1" class="txt" id="input1" required placeholder={{Input_1}} [(ngModel)]= "val1" (change)="log(1)" type="text"/>
+    </div>
+      <br/>
+      <br/>
+      <div class="form-group">
+      <input name="input2" class="txt" id="input2" required placeholder={{Input_2}} [(ngModel)]="val2" (change)="log(2)" type="text"/>
+      <div class="form-group">
+        <button id="b1" class="button" value="1" (click)="bclick(1)">1</button>
+        <button id="b2" class="button" value="2" (click)="bclick(2)">2</button>
+        <button id="b3" class="button" value="3" (click)="bclick(3)">3</button>
+        <button id="b4" class="button" value="4" (click)="bclick(4)">4</button>
+        <button id="b5" class="button" value="5" (click)="bclick(5)">5</button>
+      </div>
+      <input type="submit" class="btn" (click)="add()">
+    </div>
+    </form>
+  </div>
+  <div class="col">
+      
+  </div>
+</div>
+
+
+
+  
+

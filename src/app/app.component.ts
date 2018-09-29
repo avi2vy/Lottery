@@ -139,7 +139,7 @@ else{
 }
 
 bclick(num){
-
+if(!(this.Numbers.indexOf(num)>-1)){
 if(this.index<3){
   this.Numbers[this.index++]=num;
 }
@@ -171,8 +171,8 @@ switch(num){
     b = document.getElementById( 'b5' );
     break;
 }
-
-
+b.style.backgroundColor= '#000000';
+}
 }
 ResetButtons(){
 document.getElementById('b1').style.backgroundColor='#4C3F25';

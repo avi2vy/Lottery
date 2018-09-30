@@ -5,6 +5,7 @@ export class Report{
     Num1:string;
     Num2:string;
     Num3:string;
+    
     constructor(){
         
     }

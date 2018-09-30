@@ -40,33 +40,32 @@ public pepole:Array<Report>;
 
 Start(){
   this.ResetButtons()
- this._data.GetData();
-var Numbers= Array[3]=[0,0,0];
-this.index=0;
-var i=0, num=this.GetRandomInt(5,1);
-Numbers[i++]=num;
-while(Numbers[2]==0){
-  if(Numbers.indexOf(num) !== -1){
-  num=this.GetRandomInt(5,1);
+  this._data.GetData();
+  var Numbers= Array[3]=[0,0,0];
+  this.index=0;
+  var i=0, num=this.GetRandomInt(5,1);
+  Numbers[i++]=num;
+  while(Numbers[2]==0){
+    if(Numbers.indexOf(num) !== -1){
+      num=this.GetRandomInt(5,1);
+    }
+    else{
+      Numbers[i++]=num;
+    }
   }
-  else{
-    Numbers[i++]=num;
-  }
-}
-
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
-var HHH=today.getHours();
-var MMM=today.getMinutes();
-this.Winner=this._data.CheckWinner();
-
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+  var HHH=today.getHours();
+  var MMM=today.getMinutes();
+  this.Winner=this._data.CheckWinner();
 }
 
 
 log(X):any{
   switch(X){
+
     case 1:
     console.log(1);
     if(this.val1==''){
@@ -75,21 +74,20 @@ log(X):any{
       return false;
     }
     else if((this.val1.indexOf('@') > 0)){
-this.val2=this.val1;
-this.val1='';
-     
+      this.val2=this.val1;
+      this.val1='';
       this.Error=1;
       return false;
     }
-else if(!(this.val1.indexOf(' ') > 0)){
-  alert( "Full Name not good!" );
-  this.Error=1;
-  return false;
-}
-else{
-  this.Error=0;
-  return true;
-}
+    else if(!(this.val1.indexOf(' ') > 0)){
+      alert( "Full Name not good!" );
+      this.Error=1;
+      return false;
+    }
+    else{
+      this.Error=0;
+      return true;
+    }
     break;
 
     case 2:
@@ -99,7 +97,6 @@ else{
       return false;
     }
     else if(!(this.val2.indexOf('@') > 0)||!(this.val2.indexOf('.') > 0)||!(this.val2.indexOf('.') > this.val2.indexOf('@'))){
-
       alert( "Email not good!" );
       this.Error=1;
       return false;
@@ -122,67 +119,57 @@ else{
     break;
   }
 }
+
 GetRandomInt(max,min){
-return Math.floor(Math.random()*(max+1-min)+1)
-
+  return Math.floor(Math.random()*(max+1-min)+1)
 }
+
 add(){
-
   if(this.log(1)&&this.log(2)&&this.log(3)){
-
-var Fullname=this.val1;
-var Email=this.val2;
-var Num1=this.Numbers[0].toString();
-var Num2=this.Numbers[1].toString();
-var Num3=this.Numbers[2].toString();
-
-
-this._data.add({Fullname,Email,Num1,Num2,Num3}as Report) ;
-this.val1='';
-this.val2='';
-this.ResetButtons();
-alert( Fullname+" you're in!" );
-}
-else{
-
-}
+    var Fullname=this.val1;
+    var Email=this.val2;
+    var Num1=this.Numbers[0].toString();
+    var Num2=this.Numbers[1].toString();
+    var Num3=this.Numbers[2].toString();
+    this._data.add({Fullname,Email,Num1,Num2,Num3}as Report) ;
+    this.val1='';
+    this.val2='';
+    this.ResetButtons();
+    alert( Fullname+" you're in!" );
+  }
 }
 
 bclick(num){
-if(!(this.Numbers.indexOf(num)>-1)){
-if(this.index<3){
-  this.Numbers[this.index++]=num;
-}
-else{
-  //var temp;
-  this.Numbers=[0,0,0];
-  this.ResetButtons();
-  this.index=0;
-  this.Numbers[this.index++]=num;
-
-
-}
-
-var b;
-switch(num){
-    case 1:
-    b = document.getElementById( 'b1' );
-    break;
-    case 2:
-    b = document.getElementById( 'b2' );
-    break;
-    case 3:
-    b = document.getElementById( 'b3' );
-    break;
-    case 4:
-    b = document.getElementById( 'b4' );
-    break;
-    case 5:
-    b = document.getElementById( 'b5' );
-    break;
-}
-b.style.backgroundColor= '#000000';
-}
+  if(!(this.Numbers.indexOf(num)>-1)){
+    if(this.index<3){
+      this.Numbers[this.index++]=num;
+    }
+    else{
+      this.Numbers=[0,0,0];
+      this.ResetButtons();
+      this.index=0;
+      this.Numbers[this.index++]=num;
+    }
+    var b;
+    switch(num){
+      case 1:
+        b = document.getElementById( 'b1' );
+      break;
+      case 2:
+        b = document.getElementById( 'b2' );
+      break;
+      case 3:
+        b = document.getElementById( 'b3' );
+      break;
+      case 4:
+        b = document.getElementById( 'b4' );
+      break;
+      case 5:
+        b = document.getElementById( 'b5' );
+      break;
+    }
+    b.style.backgroundColor= '#000000';
+  }
 }
 ResetButtons(){
 document.getElementById('b1').style.backgroundColor='#4C3F25';

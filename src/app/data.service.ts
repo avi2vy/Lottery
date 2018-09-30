@@ -13,59 +13,46 @@ import{BehaviorSubject}from 'rxjs'
 export class DataService {
 
 private temp:Report[];
-//goal=this.goals.asObservable();
-//retrievedData;
 reports=new Array;
 W:Winner;
 public tempstring:string=" ";
 email:EmailService;
-report:Report;//=this.report.asObservable();
+report:Report;
 id:any='0';
+
   constructor(private http: HttpClient,protected localStorage: LocalStorage) {
     this.GetData();
    }
+
    ngOnInit(){
 
   }
-  Email(name, email, comment){
-      email.sendEmail({
-        from: 'Lottery App <lottery_app@gmail.com>',
-        to: email,
-        name: name,
-        text: comment,
-      })
-      .subscribe(
-        () => {},
-        err => console.log(err)
-      );
-    
-  }
+
   GetData(){
     var retrievedData = localStorage.getItem("Data");
     this.reports = (JSON.parse(retrievedData)) as Report[];
     this.NewWinner();
   }
+
   SetData(){
     localStorage.setItem("Data", JSON.stringify(this.reports));
   }
 
-
   add(report :Report){
     this.report=report;
     this.Sort();
-if(this.reports!=null){
-  this.reports.push(this.report);
-  console.log(this.reports);
-}
-else{
-  this.reports=[this.report];
-  console.log(this.reports);
-}
-
-  this.SetData();
-  this.GetData();
-
+    if(this.reports!=null){
+      this.reports.push(this.report);
+      console.log(this.reports);
+    }
+    else{
+      this.reports=[this.report];
+      console.log(this.reports);
+    }
+    this.SetData();
+    this.GetData();
   }
+
   Sort(){
     var temp;
     if(this.report.Num1>this.report.Num3){
@@ -84,8 +71,8 @@ else{
     var Numbers= Array[3]=[0,0,0];
     let now = new Date();
     try{
-    var retrievedData = localStorage.getItem("Winner");
-    this.W = (JSON.parse(retrievedData)) as Winner;
+      var retrievedData = localStorage.getItem("Winner");
+      this.W = (JSON.parse(retrievedData)) as Winner;
     }
     catch{
       
@@ -107,13 +94,13 @@ else{
         let now = new Date();
         this.W.Time=now.getHours().toString();
         localStorage.setItem("Winner", JSON.stringify(this.W));
-        
     }
   }
+
   GetRandomInt(max,min){
     return Math.floor(Math.random()*(max+1-min)+1)
-    
     }
+
   public CheckWinner():any{
     var temp="",n=0;
     console.log("CheckWinner");
@@ -133,18 +120,15 @@ else{
         catch{
       
         }
-      })
-      if(n==0){
-        return "No Winners";
-      }
-      else if(n==1){
-        return "Winner Is:"+temp.toString();
-      }
-      else{
-        return "Winners Are:"+temp.toString();
-      }
-      
+    })
+    if(n==0){
+      return "No Winners";
+    }
+    else if(n==1){
+      return "Winner Is:"+temp.toString();
+    }
+    else{
+      return "Winners Are:"+temp.toString();
+    } 
   }
 }
-  
-

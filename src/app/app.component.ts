@@ -131,7 +131,9 @@ var Num3=this.Numbers[2].toString();
 
 
 this._data.add({Fullname,Email,Num1,Num2,Num3}as Report) ;
-
+this.val1='';
+this.val2='';
+alert( Fullname+" you're in!" );
 }
 else{
 

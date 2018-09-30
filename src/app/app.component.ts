@@ -74,6 +74,13 @@ log(X):any{
       this.Error=1;
       return false;
     }
+    else if((this.val1.indexOf('@') > 0)){
+this.val2=this.val1;
+this.val1='';
+     
+      this.Error=1;
+      return false;
+    }
 else if(!(this.val1.indexOf(' ') > 0)){
   alert( "Full Name not good!" );
   this.Error=1;
@@ -133,6 +140,7 @@ var Num3=this.Numbers[2].toString();
 this._data.add({Fullname,Email,Num1,Num2,Num3}as Report) ;
 this.val1='';
 this.val2='';
+this.ResetButtons();
 alert( Fullname+" you're in!" );
 }
 else{
